@@ -1,85 +1,97 @@
-
-
 function computerPlay () {
-//create an array for the computer to choose from
-let computerPlay = ["Rock", "Paper", "Scissors"];
-let choice;
-let finalResult = document.createElement('h2');
-//allow the computer to pick a random number between 0-2
 
-let num = Math.floor(Math.random()* 3);
-
-    if(num===0){
-        choice = 'Rock';
-    } else if(num===1){
-        choice = 'Paper';
-    } else{
-        choice = 'Scissors';
-    }
-    return choice;
+const OPTIONS =["Rock"," Paper", "Scissors"];
+let choice = Math.floor(Math.random()* 3);
+return OPTIONS;
 }
 
-// Computer Selection 
 
-let playerScore = 0;
-let computerScore= 0;
 
-function playing (playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
+    let playerScore= document.getElementById ("player-score");
+    let computerScore= document.getElementById("computer-score");
+    let result = document.getElementById('info');
+
 if (computerSelection === playerSelection){
-   alert ("It's a Tie!");
+   result.textContent= "It's a Tie!";
+   console.log("It's a Tie!");
+   return;
 }
-
-else if (computerSelection = "Rock" && playerSelection = "Paper" ) {
-    alert ("Paper beats Rock.");
-    playerScore ++;
-}
-
-
-else if (computerSelection = "Paper" && playerSelection = "Rock" ){
-    alert ("Paper beats Rock.");
-    computerScore ++;
-
+else if(computerSelection == "rock" && playerSelection == "paper") {
+    result.textContent="Paper beats Rock.";
+    playerScore.textContent ++;
+    console.log("Paper beats Rock");
+    return;
 }
 
 
-else if (computerSelection = "Scissor" && playerSelection = "Rock" ){
-    alert ("Rock beats Scissor.");
-    playerScore ++;
-
-}
-
-else if (computerSelection = "Rock" && playerSelection = "Scissor" ){
-    alert ("Rock beats Scissor");
-    computerScore ++;
-
-}
-
-else if (computerSelection = "Paper" && playerSelection = "Scissor" ){
-    alert(" Scissor beats Paper.");
-    playerScore ++;
-
-}
-
-else (computerSelection="Scissor" && playerSelection="Paper"){
-    alert( " Scissor beats Paper.");
-    computerScore ++;
-
-}
+else if (computerSelection == "paper" && playerSelection == "rock" ){
+    result.textContent="Paper beats Rock.";
+    computerScore.textContent ++;
+    console.log ("Paper beats rock")
+    return;
 
 }
 
 
-let round = 0;
-let outcome = (computerScore - playerScore);
+else if (computerSelection == "scissor" && playerSelection == "rock" ){
+    result.textContent= "Rock beats Scissor.";
+    playerScore.textContent ++;
+    console.log("Rock beats Scissor")
+    return;
 
-if (round === 5){
-    else if (outcome = 0) {
-    alert( "It's a Tie!");
 }
-else if (outcome < 0) {
-    alert("You win!");
+
+else if (computerSelection == "rock" && playerSelection == "scissor" ){
+    result.textContent="Rock beats Scissor";
+    computerScore.textContent ++;
+    console.log ("Rock beats Scissor");
+    return;
+
 }
-else (outcome >1){ 
-    alert( "Computer Wins. Play Again?");
+
+else if (computerSelection = "paper" && playerSelection == "scissor" ){
+    result.textContent=" Scissor beats Paper.";
+    playerScore.textContent ++;
+    console.log("Scissor beats Paper");
+    return;
 }
+
+
+else if (computerSelection = "scissor" && playerSelection == "paper" ){
+    result.textContent= " Scissor beats Paper.";
+    computerScore.textContent ++;
+    console.log (" Scissor beats Paper.");
+    return;
+
 }
+
+}
+
+
+/*
+let outcome;
+outcome = (computerScore - playerScore);
+
+    if (outcome < 0) {
+        let message = "You win!" ; 
+        console.log(message);
+        return;
+    }   else if (outcome > 1) { 
+        let message = "Computer Wins. Play Again?"; 
+        console.log(message);
+    }   else {
+        let message = "It's a Tie!"; 
+        console.log(message);
+    }
+    */
+
+
+document.getElementById('rock-button').addEventListener('click',
+  () => playRound('Rock'));
+
+document.getElementById('paper-button').addEventListener('click',
+  () => playRound('Paper'));
+
+document.getElementById('scissor-button').addEventListener('click',
+  () => playRound('Scissor'));

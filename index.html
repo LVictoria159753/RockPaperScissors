@@ -5,26 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href=main.css>
-  
-    
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
 </head>
+
 <body>
     <h1>Play a Game of Classic Game of Rock Paper Scissors</h1>
-    <p>Play Against the Computer. </p>
+    <p>First to get to five points wins! </p>
 
-    <div>Score</div>
-    <div>Computer 0</div>
-    <div>Player 0</div>
+    <p>
+        Player:
+         <span id="player-score">
+             0
+        </span>
+    </p>
+    <p>Computer: 
+        <span id="computer-score">
+            0
+        </span>
 
-    <button class="button" onclick="playing">Paper</button>
-    <button class="button" onclick="playing">Rock</button>
-    <button class="button" onclick="playing">Scissors</button>
+    </p>
+
+    <button id="paper-button" class="pbuttons">Paper</button>
+    <button id="rock-button" class="rbuttons" >Rock</button>
+    <button id="scissor-button"class="sbuttons">Scissors</button>
 
     <div>
-        <button id="resetButton" class="button1">Play Again</button>
+        <button class="resetbutton">Play Again</button>
     </div>
+
+    <p id="info">Start the game</p>
     
 </body>
 <script src= "javascript.js"></script>
 </html>
+
