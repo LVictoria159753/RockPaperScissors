@@ -6,16 +6,17 @@ reloadpg.addEventListener('click',() => location.reload());
 const rockB= document.querySelector("#rock");
 const paperB= document.querySelector("#paper");
 const scissorB=document.querySelector("#scissor");
+const btns = document.querySelectorAll('button');
 
 
-rockB.addEventListener('click', function(){
-    gameRound(button.id, computerPlay);
+ rockB.addEventListener('click', function(){
+    gameRound( 'rock', computerPlay);
 })
-paperB.addEventListener('click', function(){
-    gameRound();
+ paperB.addEventListener('click', function(){
+    gameRound( 'paper', computerPlay);
 })
 scissorB.addEventListener('click', function(){
-    gameRound();
+    gameRound( 'scissor', computerPlay);
 })
 
 
@@ -31,11 +32,11 @@ function computerPlay() {
             return 'paper'
 }
 
-
+let pScore=0;
+let cpuScore=0;
 function gameRound(playerSelection, computerSelection) {
    
-    pScore=0;
-    cpuScore=0;
+   
     //Tie game
     if (playerSelection === computerSelection) {
         return 'Tie game!'
@@ -73,6 +74,11 @@ function gameRound(playerSelection, computerSelection) {
 function game() {
 
     for (let i = 1; i < 6; i++) {
+        btns.forEach((button)=>{
+            button.addEventListener('click', function(e){
+                console.log(gameRound(button.className, computerPlay()));
+            });
+        })
         console.log("games played =  " + i);   
 
     }
@@ -92,4 +98,5 @@ function decideWinner(){
 }
 while(i=5)
 }
-
+game();
+decideWinner();
