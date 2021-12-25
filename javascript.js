@@ -2,6 +2,28 @@
 const reloadpg= document.querySelector("#resetbutton");
 reloadpg.addEventListener('click',() => location.reload());
 
+let round=0;
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        game(button.id);
+        round++;
+    })
+})
+  
+//plugs the button clicking back into the gameRound function
+ function game(x){
+   gameRound(x, computerPlay());
+   
+    if(cpuScore > pScore ){
+        console.log("Computer Wins the game!");
+       
+    }
+    else {
+        console.log("You win the entire game!");
+       
+    }
+ }
 
 //Randomizes the Computer RPS Selection
 function computerPlay() {
@@ -57,28 +79,5 @@ function gameRound(playerSelection, computerSelection) {
 }
 
 
-
-
-  
-  const buttons = document.querySelectorAll('button');
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        game(button.id);
-    })
-})
-  
-  
- function game(x){
-   gameRound(x, computerPlay);
-   
-        if(cpuScore > pScore ){
-        console.log("Computer Wins the game!");
-       
-    }
-    else {
-        console.log("You win the entire game!");
-       
-    }
- }
     
    
