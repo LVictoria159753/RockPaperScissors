@@ -2,24 +2,8 @@
 const reloadpg= document.querySelector("#resetbutton");
 reloadpg.addEventListener('click',() => location.reload());
 
-// buttons for rock paper and scissor
-const rockB= document.querySelector("#rock");
-const paperB= document.querySelector("#paper");
-const scissorB=document.querySelector("#scissor");
-const btns = document.querySelectorAll('button');
 
-
- rockB.addEventListener('click', function(){
-    gameRound( 'rock', computerPlay);
-})
- paperB.addEventListener('click', function(){
-    gameRound( 'paper', computerPlay);
-})
-scissorB.addEventListener('click', function(){
-    gameRound( 'scissor', computerPlay);
-})
-
-
+//Randomizes the Computer RPS Selection
 function computerPlay() {
     const choice = Math.floor(Math.random()*100)
         if (choice >= 67) {
@@ -32,6 +16,8 @@ function computerPlay() {
             return 'paper'
 }
 
+//Keeps Player Score 
+//Keeps Compares player RPS choice and the Computer RPS choice
 let pScore=0;
 let cpuScore=0;
 function gameRound(playerSelection, computerSelection) {
@@ -71,32 +57,28 @@ function gameRound(playerSelection, computerSelection) {
 }
 
 
-function game() {
 
-    for (let i = 1; i < 6; i++) {
-        btns.forEach((button)=>{
-            button.addEventListener('click', function(e){
-                console.log(gameRound(button.className, computerPlay()));
-            });
-        })
-        console.log("games played =  " + i);   
 
-    }
-}
-
-function decideWinner(){
-    do{
+  
+  const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        game(button.id);
+    })
+})
+  
+  
+ function game(x){
+   gameRound(x, computerPlay);
+   
         if(cpuScore > pScore ){
         console.log("Computer Wins the game!");
-        break;
+       
     }
     else {
         console.log("You win the entire game!");
-        break;
+       
     }
+ }
     
-}
-while(i=5)
-}
-game();
-decideWinner();
+   
