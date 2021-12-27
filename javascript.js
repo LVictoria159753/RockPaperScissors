@@ -89,11 +89,18 @@ let round=0;
 let winner= document.getElementById("Winner");
 function decideWinner(){
         if(cpuScore ===5 ){
-           return winner.textContent= "Computer Wins the game! Click the refresh button to play again.";
+            document.getElementById("rock").disabled = true;
+           document.getElementById("paper").disabled = true;
+           document.getElementById("scissors").disabled = true;
+           return winner.textContent= "Computer Wins the game! Click the play again button to play again.";
+           
      
         }
         else if (pScore===5) {
-           return winner.textContent= "You win the entire game! Click the refresh button to play again.";
+            document.getElementById("rock").disabled = true;
+           document.getElementById("paper").disabled = true;
+           document.getElementById("scissors").disabled = true;
+           return winner.textContent= "You win the entire game! Click the play again button to play again.";
            
         }
      }
