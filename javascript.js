@@ -8,90 +8,99 @@ reloadpg.addEventListener('click',() => location.reload());
 function computerPlay() {
     const OPTIONS = ["rock", "paper", "scissors"];
     let random = Math.floor(Math.random() * 3);
+    document.getElementById("cpuChoice").innerHTML=(OPTIONS[random]);
     return OPTIONS[random];
   }
 //Keeps Player Score 
 //Keeps Compares player RPS choice and the Computer RPS choice
-
-
+let pScore=0;
+let cpuScore=0;
+let round=0;
 function playRound(playerSelection) {
-
 
 let computerScore = document.getElementById('computer-score');
 let playerScore = document.getElementById('player-score');
 let roundScore = document.getElementById('roundsPlayed');
 let result = document.getElementById('result');
+let round=0;
 
    computerSelection=computerPlay();
     //Tie game
     if (playerSelection === computerSelection) {
-        result.textContent= "Tie game!"
+        result.textContent= "Tie game! No points awarded to either party"
         roundScore.textContent++;
+        round++;
         return;
     }
 
     else if (playerSelection === 'rock' && computerSelection === 'paper') {
         result.textContent= 'You lose! Rock covered by paper!'
         computerScore.textContent++;
+        cpuScore++;
         roundScore.textContent++;
+        round++;
         return; 
     } 
     else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         result.textContent= 'You win! Rock breaks scissors!';
         playerScore.textContent++;
+        pScore++;
         roundScore.textContent++;
+        round++;
         return; 
     }
 
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        result.textContent=  'You lose! Paper cut by scissors!';
+        result.textContent=  'You lose! Paper gets cut by scissors!';
         computerScore.textContent++;
+        cpuScore++;
         roundScore.textContent++;
+        round++;
         return; 
     } 
     else if (playerSelection === 'paper' && computerSelection === 'rock') {
         result.textContent=  'You win! Paper covers rock!';
         playerScore.textContent++; 
+        pScore++;
         roundScore.textContent++;
+        round++;
         return; 
     } 
 
     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        result.textContent= 'You win! Scissors cut the paper!';
+        result.textContent= 'You win! Scissors cut paper!';
         playerScore.textContent++; 
+        pScore++;
         roundScore.textContent++;
+        round++;
         return; 
     } 
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         result.textContent= 'You lose! Scissors crushed by rock!';
         computerScore.textContent++;
+        cpuScore++;
         roundScore.textContent++;
+        round++;
         return;
     } 
+    
 }
 
-/*
-//player Score and computer Score
-document.getElementById("computer-score").innerHTML= "Computer Score: "+ pScore;
-document.getElementById("player-score").innerHTML= "Player Scored: " + cpuScore;
-document.getElementById("roundsPlayed").innerHTML="Rounds played: " + round++;
-*/
-/*
-//Finds who wins after five rounds. 
+
+let winner= document.getElementById("Winner");
 function decideWinner(){
-    while (round===5){
-        if(cpuScore > pScore ){
-            console.log("Computer Wins the game! Click the refresh button to play again.");
-            break;
+        if(cpuScore ===5 ){
+            winner.textContent= "Computer Wins the game! Click the refresh button to play again.";
+     
         }
-        else {
-            console.log("You win the entire game! Click the refresh button to play again.");
-            break;
+        else if (pScore===5) {
+            winner.textContent= "You win the entire game! Click the refresh button to play again.";
            
         }
      }
-    }
-*/
+     decideWinner();
+
+
 
 //changes to print whether User choice is Rock, Paper or Scissor
 rock.addEventListener("click",print)
@@ -116,7 +125,21 @@ let x= document.getElementById("scissors").textContent;
 document.getElementById("yourChoice").innerHTML=x;
 }
 
-/*
+
+document.getElementById('rock').addEventListener('click',
+  () => playRound('rock'));
+
+document.getElementById('paper').addEventListener('click',
+  () => playRound('paper'));
+
+document.getElementById('scissors').addEventListener('click',
+  () => playRound('scissors'));
+
+
+
+
+
+  /* SCRAP CODE
 
 const buttonsText = document.querySelectorAll('button').textContent;
 //when the buttons are clicked we
@@ -127,13 +150,13 @@ buttons.forEach((button) => {
     })
    
 })
+
 */
 
-document.getElementById('rock').addEventListener('click',
-  () => playRound('rock'));
 
-document.getElementById('paper').addEventListener('click',
-  () => playRound('paper'));
-
-document.getElementById('scissors').addEventListener('click',
-  () => playRound('scissors'));
+/*
+//player Score and computer Score
+document.getElementById("computer-score").innerHTML= "Computer Score: "+ pScore;
+document.getElementById("player-score").innerHTML= "Player Scored: " + cpuScore;
+document.getElementById("roundsPlayed").innerHTML="Rounds played: " + round++;
+*/
