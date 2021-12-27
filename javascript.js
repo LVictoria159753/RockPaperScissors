@@ -83,18 +83,17 @@ let round=0;
         round++;
         return;
     } 
-    
 }
 
 
 let winner= document.getElementById("Winner");
 function decideWinner(){
         if(cpuScore ===5 ){
-            winner.textContent= "Computer Wins the game! Click the refresh button to play again.";
+           return winner.textContent= "Computer Wins the game! Click the refresh button to play again.";
      
         }
         else if (pScore===5) {
-            winner.textContent= "You win the entire game! Click the refresh button to play again.";
+           return winner.textContent= "You win the entire game! Click the refresh button to play again.";
            
         }
      }
@@ -125,15 +124,24 @@ let x= document.getElementById("scissors").textContent;
 document.getElementById("yourChoice").innerHTML=x;
 }
 
+//implement game
+document.getElementById('rock').addEventListener('click', function(){
 
-document.getElementById('rock').addEventListener('click',
-  () => playRound('rock'));
+playRound('rock');
+decideWinner();
+});
 
-document.getElementById('paper').addEventListener('click',
-  () => playRound('paper'));
+document.getElementById('paper').addEventListener('click',function(){
 
-document.getElementById('scissors').addEventListener('click',
-  () => playRound('scissors'));
+    playRound('paper');
+    decideWinner();
+    });
+
+document.getElementById('scissors').addEventListener('click',function(){
+
+    playRound('scissors');
+    decideWinner();
+    });
 
 
 
