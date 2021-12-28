@@ -18,6 +18,7 @@ body{
 button{
   padding:15px 20px;
   background-color:rgb(217, 179, 243) ;
-  border-radius: 5px;
+  border-radius: 100px;
   font-size: 14px;
+  border: solid rgb(120, 91, 139);
 }
